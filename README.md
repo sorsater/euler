@@ -2,4 +2,4 @@
 Project Euler
 
 ## Progress:  
-17/691 = 2.46%
+19/701 = 2.71%
