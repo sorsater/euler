@@ -15,3 +15,16 @@ def factorial(n):
     if n == 1:
         return n
     return n * factorial(n - 1)
+
+def proper_divisor(n):
+    divisors = set() 
+    divisors.add(1) # Always include 1 and start at 2
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            divisors.add(i)
+            divisors.add(n // i)
+    return divisors
+
+def sum_of_divisors(n):
+    return sum(proper_divisor(n))
+    

@@ -2,4 +2,4 @@
 Project Euler
 
 ## Progress:  
-21/701 = 3.00%
+27/701 = 3.85%
