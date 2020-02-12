@@ -1,4 +1,7 @@
 import math
+import time
+import sys
+from IPython.display import clear_output
 
 def is_prime(n):
     # If divisible by two, no prime
@@ -27,4 +30,36 @@ def proper_divisor(n):
 
 def sum_of_divisors(n):
     return sum(proper_divisor(n))
-    
+
+class Progress():
+    """
+    Inspired by this blogpost:
+    https://www.mikulskibartosz.name/how-to-display-a-progress-bar-in-jupyter-notebook/
+
+    Modified to include execution time and convert to class.
+    """
+
+    def __init__(self, include_time=True):
+        self.start = time.time()
+        self.bar_length = 30
+        self.include_time = include_time
+
+    def tick(self, progress):
+        if isinstance(progress, int):
+            progress = float(progress)
+        if not isinstance(progress, float):
+            progress = 0
+        if progress < 0:
+            progress = 0
+        if progress >= 1:
+            progress = 1
+
+        block = int(round(self.bar_length * progress))
+        non_block = self.bar_length - block
+
+        clear_output(wait = True)
+        text = "Progress: [{0}] {1:.1f}%".format( "#" * block + "-" * non_block, progress * 100)
+
+        if self.include_time:
+            text += " {:.1f} seconds".format(time.time() - self.start)
+        print(text)
