@@ -44,7 +44,7 @@ class Progress():
         self.bar_length = 30
         self.include_time = include_time
 
-    def tick(self, progress):
+    def tick(self, progress, msg=None):
         if isinstance(progress, int):
             progress = float(progress)
         if not isinstance(progress, float):
@@ -58,8 +58,10 @@ class Progress():
         non_block = self.bar_length - block
 
         clear_output(wait = True)
-        text = "Progress: [{0}] {1:.1f}%".format( "#" * block + "-" * non_block, progress * 100)
+        text = 'Progress: [{0}] {1:.1f}%'.format( '#' * block + '-' * non_block, progress * 100)
 
         if self.include_time:
-            text += " {:.1f} seconds".format(time.time() - self.start)
+            text += ' {:.1f} seconds'.format(time.time() - self.start)
+        if msg:
+            text += ' {}'.format(msg)
         print(text)
