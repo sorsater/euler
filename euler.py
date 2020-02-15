@@ -31,6 +31,23 @@ def proper_divisor(n):
 def sum_of_divisors(n):
     return sum(proper_divisor(n))
 
+def prime_factors(n):
+    res = []  
+    # All modulo 2s added
+    while n % 2 == 0: 
+        res.append(2)
+        n = n / 2
+        
+    for i in range(3, int(math.sqrt(n))+1, 2):
+        while n % i == 0: 
+            res.append(i) 
+            n = n / i 
+
+    # Remainder is also prime
+    if n > 2:
+        res.append(int(n))
+    return res
+
 class Progress():
     """
     Inspired by this blogpost:
