@@ -79,7 +79,7 @@ class Progress():
         text = ''
         
         if self.show_bar:
-            text += 'Progress: [{0}] {1:.1f}%'.format( '#' * block + '-' * non_block, progress * 100)
+            text += 'Progress: [{0}] {1:.2f}%'.format( '#' * block + '-' * non_block, progress * 100)
 
         if self.include_time:
             text += ' {:.1f} seconds'.format(time.time() - self.start)
